@@ -2,7 +2,10 @@ const express = require('express');
 
 const app=express();
 
-app.listen(process.env.port, ()=>{console.log("Server started")});
+
+app.set('port',process.env.PORT || 8080);
+var port = app.get('port');
+app.listen(port,()=>{console.log('Servger running on port' + port)});
 
 app.get('/',(req,res)=>{res.sendFile(__dirname+"/pages/index.html")});
 
